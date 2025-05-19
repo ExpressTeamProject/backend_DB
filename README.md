@@ -129,6 +129,22 @@ my_db/                             # MongoDB 데이터베이스
 │   ├── likes (ref: users)        # 좋아요 누른 사용자
 │   ├── isDeleted (Boolean)       # 삭제 여부
 │   └── createdAt                 # 생성일자
+│
+├── articles/                      # 커뮤니티 게시글 컬렉션
+│   ├── title (text index)        # 제목 (필수, 최대 100자)
+│   ├── content (text index)      # 본문 내용 (필수)
+│   ├── author (ref: users)       # 작성자 참조 (필수)
+│   ├── category (enum, index)    # 카테고리 (기타 포함 5가지)
+│   ├── tags (최대 5개, index)    # 태그 배열
+│   ├── attachments (무제한)      # 첨부파일 배열 (메타정보 포함)
+│   ├── viewCount (default: 0)    # 조회수
+│   ├── likes (ref: users)        # 좋아요 누른 사용자 목록
+│   ├── comments (ref: comments)  # 댓글 목록
+│   ├── likeCount (virtual)       # 좋아요 수 (가상 필드)
+│   ├── commentCount (virtual)    # 댓글 수 (가상 필드)
+│   ├── createdAt (-1 index)      # 작성일자 (인덱스 포함)
+│   └── updatedAt                 # 수정일자 (자동 생성)
+
 ```
 
 <br><br><br>
